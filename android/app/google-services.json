@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "63049900312",
+    "firebase_url": "https://my-health-care-app.firebaseio.com",
+    "project_id": "my-health-care-app",
+    "storage_bucket": "my-health-care-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63049900312:android:a8f6c5952b044f0a",
+        "android_client_info": {
+          "package_name": "com.example.myhealthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63049900312-qroubdg3adq8rekdu6gdtapbgelhk4af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyT8_ci8U0KePpE0FbImVPS9HHZGIc_3w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
