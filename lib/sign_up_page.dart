@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:async';
+import 'package:my_health_care/user.dart';
 
 class SignUpPage extends StatefulWidget{
 
@@ -10,12 +11,6 @@ class SignUpPage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => new _SignUpPageState();
 }
-
-enum Gender{
-  male,
-  female
-}
-
 
 class _SignUpPageState extends State<SignUpPage>{
 
@@ -157,33 +152,3 @@ class _SignUpPageState extends State<SignUpPage>{
   }
 }
 
-class User {
-  String key;
-  String email;
-  String password;
-  String name;
-  String age;
-  String phone;
-  Gender gender;
-
-  User(this.email, this.password, this.name, this.age, this.phone);
-
-  User.fromSnapshot(DataSnapshot snapshot)
-    :key = snapshot.key,
-     email = snapshot.value["email"],
-        password = snapshot.value["password"],
-        name = snapshot.value["name"],
-        age = snapshot.value["age"],
-        phone = snapshot.value["phone"];
-
-  toJson(){
-    return{
-      "email":email,
-      "password":password,
-      "name":name,
-      "age":age,
-      "phone":phone,
-    };
-  }
-
-}

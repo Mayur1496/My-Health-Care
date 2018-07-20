@@ -142,7 +142,8 @@ class _LoginPageState extends State<LoginPage>{
                           sendForgotPassword();
                           _scaffoldKey.currentState.showSnackBar(
                               SnackBar(
-                                  content: Text('Password reset link sent to $_email')
+                                duration: Duration(seconds: 5),
+                                content: Text('Password reset link sent to $_email')
                               )
                           );
                         },
