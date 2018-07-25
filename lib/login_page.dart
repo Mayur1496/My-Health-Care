@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health_care/home_page.dart';
 import 'dart:async';
 
+import 'package:my_health_care/start_page.dart';
+
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
 
