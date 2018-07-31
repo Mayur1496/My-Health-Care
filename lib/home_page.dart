@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_health_care/start_page.dart';
 import 'package:my_health_care/user.dart';
+import 'package:my_health_care/login_page.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget{
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage>{
       var resBody = json.decode(res.body);
       data = resBody["activities-heart"];
       if(data==null)
-        print(".........success........");
+        print(".........failed........");
       else{
         restingHeartRate = data[0]["value"]["restingHeartRate"];
         outOfRange.setData(
@@ -67,34 +67,11 @@ class _HomePageState extends State<HomePage>{
     return "Success!";
   }
 
-  /*@override
-  Widget build(BuildContext context) {
-    String title = 'Home-Page';
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text(
-              test
-            ),
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: 1,
-              itemBuilder: (BuildContext context,int index){
-                return new Container(
-                  child: Text(test),
-                );
-              }
-          )
-        ],
-      )
+  void signout() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.popUntil(context, ModalRoute.withName(LoginPage.tag));
+  }
 
-    );
-  }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +86,18 @@ class _HomePageState extends State<HomePage>{
                   decoration: new BoxDecoration(
                       color: Colors.lightBlueAccent
                   ),
-                  child: new SizedBox(width: 400.0,height: 120.0)),                                 //Add image,barrel in place of this container
+                  child: new SizedBox(
+                      width: 400.0,
+                      height: 120.0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: ExactAssetImage('images/banner.jpg'),
+                            fit: BoxFit.fill,
+                        )
+                      ),
+                    ),
+                  )),                                 //Add image,barrel in place of this container
               const SizedBox(height:15.0),
               new Container(
                 child: new Column(
@@ -213,8 +201,7 @@ class _HomePageState extends State<HomePage>{
                 ListTile(
                   title: Text('Sign Out'),
                   onTap: (){
-                    FirebaseAuth.instance.signOut();
-                    Navigator.of(context).pushNamed(StartPage.tag);//Add the sign out code here
+                    signout();//Add the sign out code here
                   },
                 ),
               ],

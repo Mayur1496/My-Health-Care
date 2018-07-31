@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health_care/home_page.dart';
-import 'dart:async';
-
-import 'package:my_health_care/start_page.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -21,6 +18,7 @@ class _LoginPageState extends State<LoginPage>{
 
   String _email;
   String _password;
+  bool _progressBar = false;
   
   bool validateAndSave(){
     final form = formkey.currentState;
@@ -37,14 +35,22 @@ class _LoginPageState extends State<LoginPage>{
     }
   }
   void validateAndSubmit() async{
+    _progressBar = true;
     if(validateAndSave()){
       try {
+
         FirebaseUser user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
         print('Signed in: ${user.uid}');
+
+        final form = formkey.currentState;
+        form.reset();
+
         Navigator.of(context).pushNamed(HomePage.tag);
-        }catch(e){
+        }
+      catch(e){
         print('Error $e');
+        _progressBar = false;
         _scaffoldKey.currentState.showSnackBar(
             SnackBar(
                 content: Text('Invalid Credentials')
@@ -67,7 +73,7 @@ class _LoginPageState extends State<LoginPage>{
 
     return Scaffold(
       key: _scaffoldKey,
-      body: Container(
+      body:Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: ExactAssetImage('images/app_home.jpg'),
@@ -158,5 +164,4 @@ class _LoginPageState extends State<LoginPage>{
       ),
     );
   }
-
 }

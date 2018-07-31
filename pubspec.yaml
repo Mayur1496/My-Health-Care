@@ -21,6 +21,7 @@ flutter:
     - images/app_home.jpg
     - images/red_cross.png
     - images/drawer.jpg
+    - images/banner.jpg
   fonts:
     - family: IBMPlexSerif
       fonts:
