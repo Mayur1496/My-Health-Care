@@ -195,6 +195,7 @@ class _HomePageState extends State<HomePage>{
                 ListTile(
                   title: Text('Profile'),
                   onTap:(){
+                    Navigator.of(context).pushNamed('profile');
                     //Add the profile diversion code here
                   },
                 ),

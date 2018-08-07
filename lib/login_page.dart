@@ -19,6 +19,8 @@ class _LoginPageState extends State<LoginPage>{
   String _email;
   String _password;
   bool _progressBar = false;
+  FocusNode _focusNode_email = new FocusNode();
+  FocusNode _focusNode_password = new FocusNode();
   
   bool validateAndSave(){
     final form = formkey.currentState;
@@ -101,6 +103,7 @@ class _LoginPageState extends State<LoginPage>{
                         autocorrect: false,
                         validator: (val) => !val.contains('@')?'Please enter a valid Email':null,
                         onSaved: (val) => _email = val,
+                        focusNode: _focusNode_email,
                       ),
                       SizedBox(height: 16.0),
                       TextFormField(
@@ -116,6 +119,7 @@ class _LoginPageState extends State<LoginPage>{
                         //validator: (val) => val.length<6?'Too short password':null,
                         obscureText: true,
                         onSaved: (val) => _password = val,
+                        focusNode: _focusNode_password,
                       ),
                       SizedBox(height: 32.0),
                       Padding(

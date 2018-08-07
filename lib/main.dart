@@ -3,6 +3,7 @@ import 'package:my_health_care/start_page.dart';
 import 'package:my_health_care/login_page.dart';
 import 'package:my_health_care/sign_up_page.dart';
 import 'package:my_health_care/home_page.dart';
+import 'package:my_health_care/profile_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget{
       LoginPage.tag: (context) => LoginPage(),
       SignUpPage.tag: (context) => SignUpPage(),
       HomePage.tag: (context) => HomePage(),
-
+      Profile.tag: (context) => Profile(),
     };
 
     return MaterialApp(

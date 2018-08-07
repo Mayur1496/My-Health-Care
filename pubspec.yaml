@@ -4,6 +4,7 @@ description: Health Care Flutter application.
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^0.4.2
 
 dev_dependencies:
   flutter_test:
